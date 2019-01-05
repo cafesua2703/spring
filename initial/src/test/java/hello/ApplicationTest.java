@@ -17,13 +17,21 @@
 package hello;
 
 import static org.hamcrest.Matchers.containsString;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
@@ -37,20 +45,31 @@ public class ApplicationTest {
     @Test
     public void homePage() throws Exception {
         // N.B. jsoup can be useful for asserting HTML content
-        mockMvc.perform(get("/index.html"))
-                .andExpect(content().string(containsString("Get your greeting")));
+        mockMvc.perform(get("/test"))
+                .andExpect(content().string(containsString("")));
     }
 
-    @Test
-    public void greeting() throws Exception {
-        mockMvc.perform(get("/greeting"))
-                .andExpect(content().string(containsString("Hello, World!")));
-    }
-
-    @Test
-    public void greetingWithUser() throws Exception {
-        mockMvc.perform(get("/greeting").param("name", "Greg"))
-                .andExpect(content().string(containsString("Hello, Greg!")));
-    }
+//    @Test
+//    public void greeting() throws Exception {
+//        mockMvc.perform(get("/greeting"))
+//                .andExpect(content().string(containsString("Hello, World!")));
+//    }
+//
+//    @Test
+//    public void greetingWithUser() throws Exception {
+//        mockMvc.perform(get("/greeting").param("name", "Greg"))
+//                .andExpect(content().string(containsString("Hello, Greg!")));
+//    }
+//    @Test
+//    public void whenResourceAsFile_thenReadSuccessful() 
+//      throws IOException {
+//      
+//        File resource = new ClassPathResource(
+//          "SampleScript/Utility/SeleniumUtility.xlsx").getFile();
+//        XSSFWorkbook w1 = new XSSFWorkbook(resource.getAbsolutePath());
+//        String employees = new String(
+//          Files.readAllBytes(resource.toPath()));
+//        assertNotNull(employees);
+//    }
 
 }

@@ -1,0 +1,314 @@
+
+<html>
+   <head>
+      <style type="text/css">
+         .sikuli-code {
+            font-size: 20px;
+            font-family: "Osaka-mono", Monospace;
+            line-height: 1.5em;
+            display:table-cell;
+            white-space: pre-wrap;       /* css-3 */
+            white-space: -moz-pre-wrap !important;  /* Mozilla, since 1999 */
+            white-space: -pre-wrap;      /* Opera 4-6 */
+            white-space: -o-pre-wrap;    /* Opera 7 */
+            word-wrap: break-word;       /* Internet Explorer 5.5+ */
+            width: 99%;   /* remove horizontal scroll-bar when viewing in IE7 */
+         }
+         .sikuli-code img {
+            vertical-align: middle;
+            margin: 2px;
+            border: 1px solid #ccc;
+            padding: 2px;
+            -moz-border-radius: 5px;
+            -webkit-border-radius: 5px;
+            -moz-box-shadow: 1px 1px 1px gray;
+            -webkit-box-shadow: 1px 1px 2px gray;
+         }
+         .kw {
+            color: blue;
+         }
+         .skw {
+            color: rgb(63, 127, 127);
+         }
+
+         .str {
+            color: rgb(128, 0, 0);
+         }
+
+         .dig {
+            color: rgb(128, 64, 0);
+         }
+
+         .cmt {
+            color: rgb(200, 0, 200);
+         }
+
+         h2 {
+            display: inline;
+            font-weight: normal;
+         }
+
+         .info {
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 5px;
+            margin-bottom: 20px;
+            display: none;
+         }
+
+         a {
+            color: #9D2900;
+         }
+
+         body {
+            font-family: "Trebuchet MS", Arial, Sans-Serif;
+         }
+
+      </style>
+   </head>
+<body>
+<div class="info">
+<h2>test.sikuli</h2> <a href="test.zip">(Download this script)</a>
+</div>
+<pre class="sikuli-code">
+<span class="kw">def</span> shop():
+    <span class="skw">click</span>(<img src="new_tab-1.png" />) <span class="cmt">#new tab </span>
+    <span class="skw">click</span>(<img src="url-1.png" />) <span class="cmt"># url</span>
+    <span class="cmt">#type ("http://wwwstage.globe.com.ph/shop/mobile.html") </span>
+    <span class="skw">type</span> (<span class="str">"http://wwwdev.globe.com.ph/shop/platinum.html"</span>)
+    <span class="cmt">#type("https://author-globe-telecom-devl-63.adobecqms.net/content/globe/en-PH/index/shop/mobile.html")</span>
+    <span class="cmt">#type("http://localhost:4502/content/globe/en-PH/index/shop.html")</span>
+    <span class="cmt">#type("http://oc3-brie-inter-globe-author.sutrix.com/content/globe/en-PH/index/shop.html")</span>
+    <span class="cmt">#type("http://localhost:4502/content/globe/en-PH/index/shop/products/broadband/broadband-plan-1299-go-big.html")</span>
+    <span class="skw">type</span> (Key.ENTER)
+    <span class="skw">wait</span>(<span class="dig">1</span>)
+    <span class="skw">type</span>(Key.PAGE_DOWN*<span class="dig">2</span>)
+<span class="kw">def</span> sim():
+    <span class="kw">while</span> <span class="kw">not</span> exists(<img src="1534740085229.png" />):
+        <span class="skw">wait</span>(<span class="dig">1</span>)
+    <span class="skw">click</span>(<img src="1534740085229.png" />)
+<span class="kw">def</span> addToCard():
+    <span class="kw">while</span> <span class="kw">not</span> exists(<img src="btnAddToCart.png" />):
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+    <span class="cmt">#click("btnAddToCart.png")</span>
+    <span class="kw">while</span> True:
+        <span class="kw">if</span> exists(<img src="btnAddToCart.png" />):
+            <span class="skw">click</span>(<img src="btnAddToCart.png" />) <span class="cmt">#click Add To Card</span>
+        <span class="skw">wait</span>(<span class="dig">5</span>)
+        <span class="kw">if</span> exists(Pattern(<img src="btnProceedToCheckout.png" />).exact()):
+            <span class="kw">break</span>;
+<span class="kw">def</span> checkout():
+    <span class="kw">while</span> True:
+        <span class="kw">if</span> exists(<img src="btnProceedToCheckout.png" />):
+            hover(<img src="btnProceedToCheckout.png" />)
+            <span class="skw">wait</span>(<span class="dig">5</span>)
+        <span class="kw">if</span> exists(<img src="1534399637064.png" />):
+            <span class="skw">click</span>(<img src="1534399637064.png" />)
+            <span class="skw">wait</span>(<span class="dig">10</span>)
+        <span class="kw">if</span> exists(Pattern(<img src="cbGender.png" />).exact()):
+            <span class="kw">break</span>;
+        <span class="skw">wait</span>(<span class="dig">3</span>)
+<span class="kw">def</span> cart():
+    <span class="kw">while</span> True:
+        <span class="kw">if</span> exists(Pattern(<img src="cbGender-1.png" />).exact()):
+            <span class="skw">click</span>(<img src="cbGender-1.png" />)
+            <span class="skw">type</span>(Key.DOWN*<span class="dig">1</span>) <span class="cmt">#select Female</span>
+            <span class="skw">type</span>(Key.ENTER)
+
+            <span class="skw">type</span>(Key.TAB)
+            <span class="skw">type</span>(Key.DOWN*<span class="dig">6</span>)  <span class="cmt">#select Mrs  </span>
+            <span class="skw">type</span>(Key.ENTER)
+
+            <span class="skw">type</span>(Key.TAB)
+            <span class="skw">type</span>(Key.BACKSPACE)
+            <span class="skw">type</span>(<span class="str">"ho"</span>)
+
+            <span class="skw">type</span>(Key.TAB)
+            <span class="cmt">#type(Key.CTRL+"a")</span>
+            <span class="skw">type</span>(Key.BACKSPACE)
+            <span class="skw">type</span>(<span class="str">"nhu"</span>)
+            <span class="skw">wait</span>(<span class="dig">1</span>)
+
+            <span class="skw">type</span>(Key.TAB)
+            <span class="skw">type</span>(Key.BACKSPACE)
+            <span class="skw">type</span>(<span class="str">"thuy"</span>)
+
+            <span class="skw">type</span>(Key.TAB)
+            <span class="skw">type</span>(Key.BACKSPACE)
+            <span class="skw">type</span>(<span class="str">"27/3/1990"</span>)
+
+            <span class="skw">type</span>(Key.TAB)
+            <span class="skw">type</span>(Key.ENTER)
+            <span class="skw">type</span>(Key.DOWN*<span class="dig">1</span>) <span class="cmt">#select Filipino       </span>
+            <span class="skw">wait</span>(<span class="dig">1</span>)
+            <span class="skw">type</span>(Key.ENTER)
+            <span class="skw">wait</span>(<span class="dig">1</span>)
+
+            <span class="skw">type</span>(Key.TAB)
+            <span class="skw">type</span>(Key.ENTER)
+            <span class="skw">type</span>(Key.DOWN*<span class="dig">5</span>) <span class="cmt">#select Single    </span>
+            <span class="skw">type</span>(Key.ENTER)
+
+            <span class="skw">type</span>(Key.TAB)
+            <span class="skw">type</span>(Key.BACKSPACE)
+            <span class="skw">type</span>(<span class="str">"1"</span>)
+
+            <span class="skw">type</span>(Key.TAB)
+            <span class="skw">type</span>(Key.BACKSPACE)
+            <span class="skw">wait</span>(<span class="dig">1</span>)
+            <span class="skw">type</span>(<span class="str">"Mother's Maiden Name"</span>)
+
+            <span class="skw">type</span>(Key.TAB)
+            <span class="skw">type</span>(Key.BACKSPACE)
+            <span class="skw">wait</span>(<span class="dig">1</span>)
+            <span class="skw">type</span>(<span class="str">"cafesua2703@gmail.com"</span>)
+
+            <span class="skw">type</span>(Key.TAB)
+            <span class="skw">type</span>(Key.BACKSPACE)
+            <span class="skw">type</span>(<span class="str">"0907294654"</span>)
+            <span class="skw">type</span>(Key.ENTER)
+            <span class="kw">break</span>;
+        <span class="skw">wait</span>(<span class="dig">3</span>)
+    <span class="cmt">#Step 2</span>
+    <span class="kw">while</span> True:
+        <span class="kw">if</span> exists(Pattern(<img src="1534155242064-1.png" />).exact()):
+            <span class="skw">type</span>(Key.TAB)
+            <span class="skw">type</span>(Key.ENTER)
+            <span class="skw">type</span>(Key.DOWN*<span class="dig">1</span>) <span class="cmt">#select employee</span>
+            <span class="skw">type</span>(Key.ENTER)
+
+            <span class="skw">type</span>(Key.TAB)
+            <span class="skw">type</span>(Key.BACKSPACE)
+            <span class="skw">type</span>(<span class="str">"Employer/Business Name"</span>)
+
+            <span class="skw">type</span>(Key.TAB)
+            <span class="skw">type</span>(Key.ENTER)
+            <span class="skw">type</span>(Key.DOWN*<span class="dig">1</span>) <span class="cmt">#select accomodation</span>
+            <span class="skw">type</span>(Key.ENTER)
+
+            <span class="skw">type</span>(Key.TAB)
+            <span class="skw">type</span>(Key.ENTER)
+            <span class="skw">type</span>(Key.DOWN*<span class="dig">1</span>) <span class="cmt">#select 8000-9999</span>
+            <span class="skw">type</span>(Key.ENTER)
+
+            <span class="skw">type</span>(Key.TAB)
+            <span class="skw">type</span>(Key.BACKSPACE)
+            <span class="skw">type</span>(<span class="str">"Current Position Held"</span>)
+
+            <span class="skw">type</span>(Key.TAB)
+            <span class="skw">type</span>(Key.BACKSPACE)
+            <span class="skw">type</span>(<span class="str">"Company/Business Address"</span>)
+
+            <span class="skw">type</span>(Key.TAB)
+            <span class="skw">type</span>(Key.BACKSPACE)
+            <span class="skw">type</span>(<span class="str">"0907294654"</span>)
+
+            <span class="skw">type</span>(Key.TAB)
+            <span class="skw">type</span>(Key.BACKSPACE)
+            <span class="skw">type</span>(Key.ENTER)
+            <span class="skw">type</span>(<span class="str">"08/2018"</span>)
+            <span class="skw">type</span>(Key.ENTER)
+            <span class="kw">break</span>;
+    <span class="skw">wait</span>(<span class="dig">3</span>)
+    <span class="cmt">#step 3</span>
+    <span class="cmt">#while True:</span>
+    <span class="kw">if</span> exists(<img src="1534213635141-2.png" />):
+
+        <span class="skw">type</span>(Key.TAB)
+        <span class="skw">type</span>(Key.BACKSPACE)
+        <span class="skw">type</span>(<span class="str">"1"</span>)
+
+        <span class="skw">type</span>(Key.TAB)
+        <span class="skw">type</span>(Key.BACKSPACE)
+        <span class="skw">type</span>(<span class="str">"House No./ Building No."</span>)
+
+        <span class="skw">type</span>(Key.TAB)
+        <span class="skw">type</span>(Key.BACKSPACE)
+        <span class="skw">type</span>(<span class="str">"Building Name"</span>)
+
+        <span class="skw">type</span>(Key.TAB)
+        <span class="skw">type</span>(Key.BACKSPACE)
+        <span class="skw">type</span>(<span class="str">"1"</span>)
+
+        <span class="skw">type</span>(Key.TAB)
+        <span class="skw">type</span>(Key.ENTER)
+        <span class="skw">type</span>(Key.DOWN*<span class="dig">1</span>) <span class="cmt">#select Abra</span>
+        <span class="skw">type</span>(Key.ENTER)
+        <span class="skw">wait</span>(<span class="dig">3</span>)
+
+        <span class="skw">type</span>(Key.TAB)
+        <span class="skw">type</span>(Key.ENTER)
+        <span class="skw">type</span>(Key.DOWN*<span class="dig">1</span>) <span class="cmt">#select Bangued</span>
+        <span class="skw">type</span>(Key.ENTER)
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+
+        <span class="skw">type</span>(Key.TAB)
+        <span class="skw">type</span>(Key.BACKSPACE)
+        <span class="skw">type</span>(<span class="str">"Barangay"</span>)
+
+        <span class="skw">type</span>(Key.TAB)
+        <span class="skw">type</span>(Key.ENTER)
+        <span class="skw">type</span>(Key.DOWN*<span class="dig">1</span>) <span class="cmt">#select 2800</span>
+        <span class="skw">type</span>(Key.ENTER)
+
+        <span class="skw">type</span>(Key.TAB)
+        <span class="skw">type</span>(Key.ENTER)
+        <span class="skw">type</span>(Key.DOWN * <span class="dig">1</span>)  <span class="cmt">#select Company Owned</span>
+        <span class="skw">type</span>(Key.ENTER)
+
+        <span class="skw">type</span>(Key.TAB)
+        <span class="skw">type</span>(Key.ENTER)
+            <span class="cmt">#break;</span>
+    <span class="cmt">#step 4</span>
+    <span class="skw">wait</span>(<span class="dig">3</span>)
+
+    <span class="cmt">#address</span>
+    <span class="skw">type</span>(Key.TAB)
+    <span class="skw">type</span>(Key.TAB)
+    <span class="skw">type</span>(Key.ENTER)
+    <span class="skw">wait</span>(<span class="dig">3</span>)
+
+    <span class="cmt">#application document</span>
+    <span class="skw">type</span>(Key.TAB)
+    <span class="skw">wait</span>(<span class="dig">1</span>)
+    <span class="skw">type</span>(Key.TAB)
+    <span class="skw">wait</span>(<span class="dig">1</span>)
+    <span class="skw">type</span>(Key.TAB)
+    <span class="skw">wait</span>(<span class="dig">1</span>)
+    <span class="skw">type</span>(Key.TAB)
+    <span class="skw">wait</span>(<span class="dig">1</span>)
+    <span class="skw">type</span>(Key.ENTER)
+    <span class="skw">wait</span>(<span class="dig">5</span>)
+
+    <span class="cmt">#agree</span>
+    <span class="skw">type</span>(Key.TAB)
+    <span class="skw">wait</span>(<span class="dig">1</span>)
+    <span class="skw">type</span>(Key.TAB)
+    <span class="skw">wait</span>(<span class="dig">1</span>)
+    <span class="skw">type</span>(Key.TAB)
+    <span class="skw">wait</span>(<span class="dig">1</span>)
+    <span class="skw">type</span>(Key.ENTER)
+    <span class="skw">wait</span>(<span class="dig">3</span>)
+<span class="kw">def</span> orderSummary():
+    <span class="cmt">#order summary</span>
+    <span class="kw">while</span> True:
+        <span class="kw">if</span> exists(<img src="1534399972785.png" />):
+            <span class="skw">click</span>(<img src="1534399972785.png" />)
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+        <span class="kw">if</span> exists(<img src="1534400007727.png" />):
+            <span class="skw">click</span>(<img src="1534400007727.png" />)
+            <span class="skw">type</span>(Key.TAB)
+            <span class="skw">type</span>(Key.ENTER)
+            <span class="kw">break</span>;
+        <span class="skw">wait</span>(<span class="dig">3</span>)
+    <span class="kw">while</span> <span class="kw">not</span> exists(<img src="1534415994821.png" />):
+        <span class="skw">wait</span>(<span class="dig">1</span>)
+<span class="cmt">#App.open("Google Chrome")</span>
+shop()
+sim()
+addToCard()
+checkout()
+cart()
+orderSummary()
+</pre>
+</body>
+</html>

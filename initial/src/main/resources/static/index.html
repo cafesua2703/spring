@@ -1,10 +1,78 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-    <title>Getting Started: Serving Web Content</title>
+    <title>Auto Test</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">   
+	<link rel="stylesheet" href="https://code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css" />   
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.7.7/xlsx.core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xls/0.7.4-a/xls.core.min.js"></script>
+    <script type="text/javascript" src="js/script.js" /></script>
+    <script src="js/index.js" /></script> 
+   	<script src="js/bootstrap.min.js"></script>
+   	<!-- Internet Explorer HTML5 enabling script: -->
+    <!--[if IE]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <script type="text/javascript">
+    $(document).ready(function(){
+    	$('#btnTest').on("click",  ajaxCall);
+    	$(function () {
+    		  $( "#loading" ).dialog({
+    		    autoOpen: false
+    		  });
+    		  $("#btnTest").click(function() {
+    		    $("#loading").dialog('open');
+    		  });
+    	});
+    	$.get('./Sikuli.log', function(data) {    
+    	    var lines = data.split("\n");
+
+    	    $.each(lines, function(n, elem) {
+    	       $('#loading').append('<div>' + elem + '</div>');
+    	    });
+    	});
+    });
+    
+    </script>
 </head>
 <body>
-    <p>Get your greeting <a href="/greeting">here</a></p>
+    <p>Get your greeting 
+    <a href="/greeting">
+    here</a></p>
+    <section id="page"> <!-- Defining the #page section with the section tag -->
+
+    <!-- Article 1 start -->
+    <div class="line">
+    </div>  <!-- Dividing line -->
+    <article id="article1"> <!-- The new article tag. The id is supplied so it can be scrolled into view. -->
+        <h2>Run test:</h2>
+        <input class="button" type="file" id="excelfile" />
+        <input class="button" type="button" id="viewfile" value="Export To Table" onclick="ExportToTable()" />
+        <input class="button" type="button" id="clear" value="Clear" onclick="clearTableBody()" />
+        <input class="button" type="button" id="save" value="Save" onclick="saveTable()" />
+        <br />
+        <br />
+        <table id="exceltable">
+        </table>
+        <div class="line">
+            <form method="post" action="/test">
+                <input type="radio" name="name" id="sikuli" value="sikuli" checked="checked"> Sikuli<br>
+                <input type="radio" name="name" id="selenium" value="selenium" > Selenium<br>
+                <br>
+                <input class="button" type="submit" id="btnTest" value="Test" />
+            </form>
+            
+        </div>
+		<div id="loading"  title="Waiting dialog" hidden="hidden"> 
+	    	<p>Please wait ...</p>
+		</div>
+    </article>
+    <!-- Article 1 end -->
+
+</section> <!-- Closing the #page section -->
 </body>
 </html>
